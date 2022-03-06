@@ -14,9 +14,11 @@ class App extends Component {
     //Do not mutate state directly use setState
     // this.state.count+=1;
     this.setState({
-      count: this.state.count+1
+      persons: [
+        { name: "Nikhil Gola", age: "26" },
+        { name: "Sahil Chadha", age: "27" },
+      ],
     });
-    console.log(`Button was clicked ${this.state.count} times`);
     
   }
   render() {
