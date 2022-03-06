@@ -6,7 +6,7 @@ class App extends Component {
   render() {
     return (
       //<h1>This is first element</h1>
-      React.createElement('div',null,React.createElement('h1',null,"This is first element"))
+      React.createElement('div',{className: 'App'},React.createElement('h1',null,"This is first element"))
     );
   }
 }
