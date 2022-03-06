@@ -12,8 +12,12 @@ class App extends Component {
   };
   switchNameHandler = () =>{
     //Do not mutate state directly use setState
-    this.state.count+=1;
+    // this.state.count+=1;
+    this.setState({
+      count: this.state.count+1
+    });
     console.log(`Button was clicked ${this.state.count} times`);
+    
   }
   render() {
     return (
