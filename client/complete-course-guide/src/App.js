@@ -10,6 +10,14 @@ class App extends Component {
     ],
     count: 0
   };
+  changeNameHandler = (event) => {
+    this.setState({
+      persons: [
+        { name: "Nikhil Gola", age: "26" },
+        { name: event.target.value, age: "27" },
+      ],
+    });
+  }
   switchNameHandler = (newName) =>{
     //Do not mutate state directly use setState
     // this.state.count+=1;
@@ -34,6 +42,7 @@ class App extends Component {
           name={this.state.persons[1].name}
           age={this.state.persons[0].age}
           click = {()=>this.switchNameHandler("Sahil chaddha")}
+          changed = {this.changeNameHandler}
         >
           <p>I am CSE Student</p>
         </Person>
