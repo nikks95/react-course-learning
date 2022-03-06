@@ -19,8 +19,6 @@ class App extends Component {
     });
   };
   switchNameHandler = (newName) => {
-    //Do not mutate state directly use setState
-    // this.state.count+=1;
     this.setState({
       persons: [
         { name: "Nikhil Gola", age: "26" },

@@ -1,6 +1,5 @@
 import React from "react";
 import '../Person/Person.css';
-// const randomAge = () => Math.floor(Math.random()*30);
 const person = (props) => {
   return (
     <div className="Person" onClick={props.click}>
