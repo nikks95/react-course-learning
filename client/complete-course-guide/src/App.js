@@ -9,6 +9,7 @@ class App extends Component {
       { name: "Sahil", age: "27" },
     ],
     count: 0,
+    dataShow: false,
   };
   changeNameHandler = (event) => {
     this.setState({
@@ -17,6 +18,10 @@ class App extends Component {
         { name: event.target.value, age: "27" },
       ],
     });
+  };
+  toggleDataHandler = () => {
+    const flag = this.state.dataShow;
+    this.setState({dataShow : !flag});
   };
   switchNameHandler = (newName) => {
     this.setState({
@@ -38,22 +43,32 @@ class App extends Component {
       <div className="App">
         <h1>This is first page</h1>
         <button
-          style={style}  
-          onClick={this.switchNameHandler.bind(this, "Sahil")}>
-          Switch Name
+          style={style}
+          onClick={this.toggleDataHandler}>
+          Toggle
         </button>
-        <Person
-          name={this.state.persons[0].name}
-          age={this.state.persons[0].age}
-        />
-        <Person
-          name={this.state.persons[1].name}
-          age={this.state.persons[0].age}
-          click={() => this.switchNameHandler("Sahil chaddha")}
-          changed={this.changeNameHandler}
-        >
-          <p>I am CSE Student</p>
-        </Person>
+        {this.state.dataShow ? 
+          <div>
+            <button
+              style={style}
+              onClick={this.switchNameHandler.bind(this, "Sahil")}
+            >
+              Switch Name
+            </button>
+            <Person
+              name={this.state.persons[0].name}
+              age={this.state.persons[0].age}
+            />
+            <Person
+              name={this.state.persons[1].name}
+              age={this.state.persons[0].age}
+              click={() => this.switchNameHandler("Sahil chaddha")}
+              changed={this.changeNameHandler}
+            >
+              <p>I am CSE Student</p>
+            </Person>
+          </div>
+         : null}
       </div>
     );
   }
