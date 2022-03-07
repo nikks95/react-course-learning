@@ -21,7 +21,7 @@ class App extends Component {
   };
   toggleDataHandler = () => {
     const flag = this.state.dataShow;
-    this.setState({dataShow : !flag});
+    this.setState({ dataShow: !flag });
   };
   switchNameHandler = (newName) => {
     this.setState({
@@ -39,36 +39,39 @@ class App extends Component {
       padding: "8px",
       cursor: "pointer",
     };
+    let persons = null;
+
+    if (this.state.dataShow) {
+      persons = (
+        <div>
+          <button
+            style={style}
+            onClick={this.switchNameHandler.bind(this, "Sahil")}
+          >
+            Switch Name
+          </button>
+          <Person
+            name={this.state.persons[0].name}
+            age={this.state.persons[0].age}
+          />
+          <Person
+            name={this.state.persons[1].name}
+            age={this.state.persons[0].age}
+            click={() => this.switchNameHandler("Sahil chaddha")}
+            changed={this.changeNameHandler}
+          >
+            <p>I am CSE Student</p>
+          </Person>
+        </div>
+      );
+    }
     return (
       <div className="App">
         <h1>This is first page</h1>
-        <button
-          style={style}
-          onClick={this.toggleDataHandler}>
+        <button style={style} onClick={this.toggleDataHandler}>
           Toggle
         </button>
-        {this.state.dataShow ? 
-          <div>
-            <button
-              style={style}
-              onClick={this.switchNameHandler.bind(this, "Sahil")}
-            >
-              Switch Name
-            </button>
-            <Person
-              name={this.state.persons[0].name}
-              age={this.state.persons[0].age}
-            />
-            <Person
-              name={this.state.persons[1].name}
-              age={this.state.persons[0].age}
-              click={() => this.switchNameHandler("Sahil chaddha")}
-              changed={this.changeNameHandler}
-            >
-              <p>I am CSE Student</p>
-            </Person>
-          </div>
-         : null}
+        {persons}
       </div>
     );
   }
