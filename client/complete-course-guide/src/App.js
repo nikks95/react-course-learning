@@ -7,6 +7,7 @@ class App extends Component {
     persons: [
       {id: 'nik' ,name: "Nikhil", age: "26" },
       {id: 'sah', name: "Sahil", age: "27" },
+      {id: 'sah1', name: "Ish", age: "27" },
     ],
     count: 0,
     dataShow: false,
@@ -66,9 +67,17 @@ class App extends Component {
        );
        style.backgroundColor = 'red';
     }
+    let classes = [];
+    if(this.state.persons.length<=2){
+      classes.push("red");
+    }
+    if(this.state.persons.length <=1){
+      classes.push('bold');
+    }
     return (
       <div className="App">
-        <h1>This is first page</h1>
+        <h1>I am React App</h1>
+        <p className={classes.join(' ')}>This is first page</p>
         <button style={style} onClick={this.toggleDataHandler}>
           Toggle
         </button>
