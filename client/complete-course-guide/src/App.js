@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Person from "./Person/Person";
 import "./App.css";
-import Radium from "radium";
+import Radium, {StyleRoot} from "radium";
 
 class App extends Component {
   state = {
@@ -84,6 +84,7 @@ class App extends Component {
       classes.push('bold');
     }
     return (
+      <StyleRoot>
       <div className="App">
         <h1>I am React App</h1>
         <p className={classes.join(' ')}>This is first page</p>
@@ -92,6 +93,7 @@ class App extends Component {
         </button>
         {persons}
       </div>
+      </StyleRoot>
     );
   }
 }
