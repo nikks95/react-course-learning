@@ -19,6 +19,12 @@ class App extends Component {
       ],
     });
   };
+  deletePersonHandler = (personIndex) => {
+    //const persons = this.state.persons; // Copy by reference
+    const persons = [...this.state.persons]
+    persons.splice(personIndex,1);
+    this.setState({persons:persons});
+  };
   toggleDataHandler = () => {
     const flag = this.state.dataShow;
     this.setState({ dataShow: !flag });
@@ -38,6 +44,7 @@ class App extends Component {
       border: "1px solid #eee",
       padding: "8px",
       cursor: "pointer",
+      margin: "2px 2px 4px 4px"
     };
     let persons = null;
 
@@ -50,18 +57,10 @@ class App extends Component {
           >
             Switch Name
           </button>
-          <Person
-            name={this.state.persons[0].name}
-            age={this.state.persons[0].age}
-          />
-          <Person
-            name={this.state.persons[1].name}
-            age={this.state.persons[0].age}
-            click={() => this.switchNameHandler("Sahil chaddha")}
-            changed={this.changeNameHandler}
-          >
-            <p>I am CSE Student</p>
-          </Person>
+          {this.state.persons.map((person, index) => {
+              return  <Person name={person.name} age={person.age} click={ () => this.deletePersonHandler(index)}></Person>
+           })}
+          
         </div>
       );
     }
