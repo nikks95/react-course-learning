@@ -5,8 +5,8 @@ import "./App.css";
 class App extends Component {
   state = {
     persons: [
-      { name: "Nikhil", age: "26" },
-      { name: "Sahil", age: "27" },
+      {id: 'nik' ,name: "Nikhil", age: "26" },
+      {id: 'sah', name: "Sahil", age: "27" },
     ],
     count: 0,
     dataShow: false,
@@ -32,8 +32,8 @@ class App extends Component {
   switchNameHandler = (newName) => {
     this.setState({
       persons: [
-        { name: "Nikhil Gola", age: "26" },
-        { name: newName, age: "27" },
+        {  name: "Nikhil Gola", age: "26" },
+        {  name: newName, age: "27" },
       ],
     });
   };
@@ -51,18 +51,15 @@ class App extends Component {
     if (this.state.dataShow) {
       persons = (
         <div>
-          <button
-            style={style}
-            onClick={this.switchNameHandler.bind(this, "Sahil")}
-          >
-            Switch Name
-          </button>
           {this.state.persons.map((person, index) => {
-              return  <Person name={person.name} age={person.age} click={ () => this.deletePersonHandler(index)}></Person>
+              return  <Person
+              key={person.id}
+              name={person.name} 
+              age={person.age} 
+              click={ () => this.deletePersonHandler(index)}></Person>
            })}
-          
         </div>
-      );
+       );
     }
     return (
       <div className="App">
